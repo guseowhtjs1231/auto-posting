@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>블로그 현황</h1>    
+<h2>Total of Available Post : {{data.total_available_post}}</h2>
+<form method="POST" class="mt-3" action="/blog/tistory">
+<div class="card">
+    <div class="card-header">
+        <h2>Tistory status</h2>
+    </div>
+    <div class="card-body">
+        <p>Call back URL : {{data.call_back_url}}</p>
+        <p>App ID : {{data.app_id}}</p>
+    </div>
+    <div class="card-footer">
+        <div class="col-sm-10">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary form-control">Get Code</button>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <input type="hidden" name="client_id" class="form-control" value="{{ data.app_id }}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <input type="hidden" name="redirect_uri" class="form-control" value="{{ data.call_back_url }}" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <input type="hidden" name="response_type" class="form-control" value="code" />
+        </div>
+    </div>
+</div>
+</form>
+{% endblock %}

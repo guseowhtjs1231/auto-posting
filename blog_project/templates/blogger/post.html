@@ -1,0 +1,14 @@
+<html>
+    <body onload="document.my_form.submit()">
+        {% url "external_url" as the_url%}
+        <form action="{{ the_url }}" name="my_form" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="client_id" value="{{ client_id }}" />
+            <input type="hidden" name="redirect_uri" value="{{ redirect_uri }}" />
+            <input type="hidden" name="include_granted_scopes" value="{{ include_granted_scopes }}" />
+            <input type="hidden" name="scope" value="{{ scope }}" />
+            <input type="hidden" name="response_type" value="{{ response_type }}" />
+            <input type="hidden" name="access_type" value="{{ access_type }}" />
+        </form>
+    </body>
+</html>

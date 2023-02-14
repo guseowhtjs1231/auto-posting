@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>블로그 현황</h1>    
+<h2>Total of Available Post : {{data.total_available_post}}</h2>
+<div class="card">
+    <div class="card-header">
+        <h2>Tistory status</h2>
+    </div>
+    <div class="card-body">
+        <p>Posted in Korean : {{data.tistory.ko}}</p>
+        <p>Posted in English : {{data.tistory.en}}</p>
+        <p>Total posted : {{data.tistory.total}}</p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h2>Blogger status</h2>
+    </div>
+    <div class="card-body">
+        <p>Posted in Korean : {{data.blogger.ko}}</p>
+        <p>Posted in English : {{data.blogger.en}}</p>
+        <p>Total posted : {{data.blogger.total}}</p>
+    </div>
+</div>
+
+<h2>Total posted : {{data.total_posted}}</h2>
+<h2>Total translated : {{data.total_translated}}</h2>
+<h2>Total english content : {{data.total_original}}</h2>
+<h2>Total scraped endpoint : {{data.total_endpoint}}</h2>
+<h2>Total scraped tag : {{data.total_tag}}</h2>
+<h2>Total scraped answer : {{data.total_answer}}</h2>
+    <!-- {% for question in questions %}
+        <h1>제목: {{ question.translated_title}} </h1>
+        <p>내용:
+            {% autoescape off %} 
+            {{ question.translated_question }}
+            {% endautoescape %}
+        </p>
+    {% endfor %} -->
+{% endblock %}
