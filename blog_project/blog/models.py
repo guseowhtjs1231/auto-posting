@@ -66,3 +66,11 @@ class Configuration(models.Model):
     class Meta:
         db_table = 'configurations'
 
+class Credential(models.Model):
+    loginid = models.CharField(max_length=255)
+    pw_value = models.CharField(max_length=255)
+    type = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'credentials'
+

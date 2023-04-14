@@ -55,6 +55,7 @@ class TistoryView(View):
     
     def post(self, request):
         from selenium import webdriver
+        login_config = Configuration.objects.get(type="Kakao")
         
         app_id          = request.POST.get("client_id")
         redirect_uri    = request.POST.get("redirect_uri")
@@ -71,14 +72,14 @@ class TistoryView(View):
         kakao_login_button.click()
         time.sleep(3)
         
-        email = driver.find_element_by_css_selector('#loginEmailField > div > input')
-        passwd = driver.find_element_by_css_selector('#login-form > fieldset > div.item_tf.item_inp > input')
+        email = driver.find_element_by_css_selector('#loginKey--1')
+        passwd = driver.find_element_by_css_selector('#password--2')
         
-        email.send_keys('samil4517@hanmail.net')
+        email.send_keys(login_config.loginid)
         time.sleep(5)
-        passwd.send_keys('tkfkdlTsp1231@')
+        passwd.send_keys(login_config.pw_value)
         time.sleep(5)
-        driver.find_element_by_css_selector('#login-form > fieldset > div.wrap_btn > button.btn_g.btn_confirm.submit').click()
+        driver.find_element_by_css_selector('#mainContent > div > div > form > div.confirm_btn > button.btn_g.highlight.submit').click()
         #id_email_2
         #id_password_3
         #login-form > fieldset > div.item_tf.item_inp
